@@ -10,11 +10,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Setup Git') {
-            steps {
-                sh 'git config --global --add safe.directory /var/jenkins_home/caches/git-a661cc6bfc9e076b12fd1311d4b932a0'
-            }
-        }
         stage('Test') { 
             steps {
                 sh './jenkins/scripts/test.sh' 
