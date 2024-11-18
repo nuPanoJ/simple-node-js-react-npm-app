@@ -19,16 +19,6 @@ pipeline {
                 sh 'git config --global --add safe.directory /var/jenkins_home/caches/git-a661cc6bfc9e076b12fd1311d4b932a0'
             }
         }
-        stage('Setup Git Safe Directory') {
-            steps {
-                sh 'git config --global --add safe.directory /var/jenkins_home/workspace/simple-node-js-react-npm-app'
-            }
-        }
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Test') { 
             steps {
                 sh './jenkins/scripts/test.sh' 
