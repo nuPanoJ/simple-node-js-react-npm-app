@@ -25,14 +25,14 @@ pipeline {
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
                 dependencyCheck additionalArguments: ''' 
-                            -o './'
+                            -o './target'
                             -s './'
                             -f 'ALL' 
                             --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
                 
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                // Ensure that the report is found in the target folder
+                dependencyCheckPublisher pattern: '**/target/dependency-check-report.xml'
             }
         }
     }
 }
-
